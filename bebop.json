@@ -1,0 +1,11 @@
+{
+  "generators": {
+    "ts": {
+      "outFile": "../generated/generated.ts"
+    },
+    "rust": {
+      "outFile": "../generated/mod.rs"
+    }
+  },
+  "include": ["schemas/*.bop"]
+}
