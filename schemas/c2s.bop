@@ -7,13 +7,33 @@ union C2sMsg {
     2 -> struct GetFriendPeerId {
         guid FriendUserId;
     }
-    3 -> struct NewGame {
-        guid ReceiverUserId;
+    3 -> struct CreateLobby {
         guid VariantId;
         string VariantVersion;
         string ScriptUrl;
     }
-    4 -> struct NewGameAnswer {
-        bool Accepted;
+    4 -> struct InviteToLobby {
+        guid LobbyId;
+        guid[] FriendUserIds;
+    }
+    5 -> struct JoinLobby {
+        guid LobbyId;
+    }
+    6 -> struct LeaveLobby {
+        guid LobbyId;
+    }
+    7 -> struct DeleteLobby {
+        guid LobbyId;
+    }
+    8 -> struct StartGame {
+        guid LobbyId;
+    }
+    9 -> struct GameEnded {
+        guid LobbyId;
+    }
+    10 -> struct LobbyHeartbeat {
+        guid LobbyId;
+    }
+    11 -> struct LobbyEventAck {
     }
 }

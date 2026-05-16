@@ -7,17 +7,60 @@ union S2cMsg {
     2 -> message GetFriendPeerIdResponse {
         1 -> string PeerId;
     }
-    3 -> message NewGameResponse {
-        1 -> bool Accepted;
-        2 -> string ReceiverPeerId;
+    3 -> message CreateLobbyResponse {
+        1 -> bool Success;
+        2 -> guid LobbyId;
     }
-    4 -> message NewGameEvent {
-        1 -> guid SenderUserId;
-        2 -> string SenderUserName;
-        3 -> guid VariantId;
-        4 -> string VariantVersion;
-        5 -> uint32 TimeoutSecs;
-        6 -> string SenderPeerId;
-        7 -> string ScriptUrl;
+    4 -> message JoinLobbyResponse {
+        1 -> bool Success;
+        2 -> string[] MemberPeerIds;
+        3 -> string[] MemberNames;
+        4 -> guid[] MemberUserIds;
+        5 -> string HostPeerId;
+        6 -> bool InGame;
+    }
+    5 -> struct LeaveLobbyResponse {
+    }
+    6 -> message DeleteLobbyResponse {
+        1 -> bool Success;
+    }
+    7 -> message StartGameResponse {
+        1 -> bool Success;
+    }
+    8 -> struct GameEndedResponse {
+    }
+    9 -> struct LobbyHeartbeatResponse {
+    }
+    10 -> message InviteToLobbyResponse {
+        1 -> bool Success;
+    }
+    // Push notifications (sent server → client via s2c channel)
+    11 -> message LobbyInvite {
+        1 -> guid LobbyId;
+        2 -> guid HostUserId;
+        3 -> string HostName;
+        4 -> guid VariantId;
+        5 -> string VariantVersion;
+        6 -> string ScriptUrl;
+    }
+    12 -> message LobbyMemberJoined {
+        1 -> guid LobbyId;
+        2 -> string PeerId;
+        3 -> guid UserId;
+        4 -> string DisplayName;
+    }
+    13 -> message LobbyMemberLeft {
+        1 -> guid LobbyId;
+        2 -> string PeerId;
+    }
+    14 -> message LobbyDeleted {
+        1 -> guid LobbyId;
+    }
+    15 -> message LobbyGameStarted {
+        1 -> guid LobbyId;
+        2 -> string[] PeerIds;
+    }
+    16 -> message LobbyGameEnded {
+        1 -> guid LobbyId;
     }
 }
