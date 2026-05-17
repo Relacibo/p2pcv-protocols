@@ -1,6 +1,7 @@
-// lobby.bop — p2pcv lobby protocol, peer-to-peer messages
+// p2p.bop — p2pcv peer-to-peer protocol (direct client ↔ client messages)
+// Lobbies and games can be formed directly via peer_id without a server.
 
-union LobbyMsg {
+union P2pMsg {
     // Sent by a joining peer to the host to announce themselves
     1 -> message LobbyJoin {
         1 -> string PeerId;
