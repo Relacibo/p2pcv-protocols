@@ -16,7 +16,7 @@ union S2cMsg {
         2 -> string[] MemberPeerIds;
         3 -> string[] MemberNames;
         4 -> guid[] MemberUserIds;
-        5 -> string HostPeerId;
+        5 -> guid HostUserId;
         6 -> bool InGame;
     }
     5 -> struct LeaveLobbyResponse {
@@ -51,7 +51,7 @@ union S2cMsg {
     }
     13 -> message LobbyMemberLeft {
         1 -> guid LobbyId;
-        2 -> string PeerId;
+        2 -> guid UserId;
     }
     14 -> message LobbyDeleted {
         1 -> guid LobbyId;
